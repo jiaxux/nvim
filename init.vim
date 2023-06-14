@@ -31,12 +31,35 @@ set clipboard=unnamed
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
+" NERDTree setting
+let g:NERDTreeWinSize=20
+
+" Python syntax highlighting
+let g:python_highlight_all = 1
+
+" Speedup ctrlp
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
+
+" Auto open NERDTree
+"" au VimEnter *  NERDTree
+
+" Declare the list of themes.
+Plug 'morhetz/gruvbox'
+
 " Declare the list of plugins.
 Plug 'github/copilot.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-python/python-syntax'
+Plug 'vim-python/python-indent'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-colorscheme dracula
+colorscheme gruvbox
