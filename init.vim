@@ -40,6 +40,7 @@ command Wq wq
 command W w
 command Q q
 command Ag :FzfAg
+command Nt :NERDTree
 command Bt  :belowright split |terminal  
 nnoremap gr gT
 tnoremap <Esc> <C-\><C-n>
@@ -72,7 +73,12 @@ let g:python_highlight_all = 1
 let g:cpp_function_highlight = 1
 let g:cpp_attributes_highlight = 1
 let g:cpp_member_highlight = 1
-let g:cpp_member_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_simple_highlight = 1
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
 
 " Speedup ctrlp
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
@@ -105,6 +111,7 @@ let g:syntastic_check_on_wq = 0
 " Declare the list of themes.
 Plug 'morhetz/gruvbox'
 Plug 'EdenEast/nightfox.nvim'
+Plug 'sickill/vim-monokai'
 
 " Declare the list of plugins.
 Plug 'scrooloose/nerdtree'
@@ -114,6 +121,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-python/python-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'vim-python/python-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
