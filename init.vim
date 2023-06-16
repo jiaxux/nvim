@@ -48,6 +48,8 @@ command Nt NERDTree
 command Bt belowright split |terminal
 command Is Isort
 nnoremap gr gT
+nnoremap <C-A-l> :Autoformat<CR>
+nnoremap <C-A-o> :Isort<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " Ignore capital letters during search.
@@ -95,10 +97,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 " Auto open NERDTree
 "au VimEnter *  NERDTree
 let g:NERDTreeWinSize=40
-
-" Autoformat when save
-au BufWrite * :Autoformat
-au BufWrite * :Isort
 
 " Airline symnbol setup
 let g:airline_symbols = {}
