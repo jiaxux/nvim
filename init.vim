@@ -24,9 +24,13 @@ nmap <silent> gv :vsp<CR><Plug>(coc-definition)
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Do not save backup files.
 set nobackup
+
+" Sort imports for python
+let g:vim_isort_python_version = 'python3'
+let g:vim_isort_map = '<C-i>'
 
 " Map FZF Commands
 let g:fzf_command_prefix = 'Fzf'
@@ -39,9 +43,10 @@ command WQ wq
 command Wq wq
 command W w
 command Q q
-command Ag :FzfAg
-command Nt :NERDTree
-command Bt  :belowright split |terminal  
+command Ag FzfAg
+command Nt NERDTree
+command Bt belowright split |terminal
+command Is Isort
 nnoremap gr gT
 tnoremap <Esc> <C-\><C-n>
 
@@ -49,7 +54,7 @@ tnoremap <Esc> <C-\><C-n>
 set ignorecase
 
 " PEP8 ruler
-set colorcolumn=120
+set colorcolumn=80
 
 " UTF-8 Support
 set encoding=utf-8
@@ -83,13 +88,17 @@ let g:cpp_member_variable_highlight = 1
 " Speedup ctrlp
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 
 " Auto open NERDTree
 "au VimEnter *  NERDTree
 let g:NERDTreeWinSize=40
+
+" Autoformat when save
+au BufWrite * :Autoformat
+au BufWrite * :Isort
 
 " Airline symnbol setup
 let g:airline_symbols = {}
@@ -119,13 +128,15 @@ Plug 'dracula/vim'
 Plug 'github/copilot.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-python/python-syntax'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'vim-python/python-syntax'
+Plug 'kh3phr3n/python-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
+Plug 'fisadev/vim-isort'
+Plug 'vim-autoformat/vim-autoformat'
 
 call plug#end()
 colorscheme carbonfox
+

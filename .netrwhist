@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
-let g:netrw_dirhist_2='/home/jixing/.config/nvim'
-let g:netrw_dirhist_1='/home/jixing/.config'
-
-:let g:NERDTreeWinSize=60
