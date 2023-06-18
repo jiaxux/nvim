@@ -1,6 +1,9 @@
 " Disable compatibility with vi which can cause unexpected issues
 set nocompatible
 
+" Disable swap files
+set noswapfile
+
 " Change Leader to ,
 let mapleader = ","
 
@@ -70,9 +73,6 @@ set clipboard=unnamed
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-" NERDTree setting
-let g:NERDTreeWinSize=120
-
 " Python syntax highlighting
 let g:python_highlight_all = 1
 
@@ -94,8 +94,6 @@ if executable('ag')
 endif
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 
-" Auto open NERDTree
-"au VimEnter *  NERDTree
 let g:NERDTreeWinSize=40
 
 " Airline symnbol setup
@@ -103,6 +101,8 @@ let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.colnr = 'c'
 let g:airline_symbols.linenr = 'l'
+let g:airline_theme='minimalist'
+
 " Syntastic check
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_pylint_post_args="--max-line-length=120"
@@ -121,10 +121,11 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'sickill/vim-monokai'
 
 " Declare the list of plugins.
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'dracula/vim'
 Plug 'github/copilot.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'kh3phr3n/python-syntax'
