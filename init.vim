@@ -103,6 +103,19 @@ let g:airline_symbols.colnr = 'c'
 let g:airline_symbols.linenr = 'l'
 let g:airline_theme='minimalist'
 
+" Airline setup
+function! AirlineInit()
+  " first define a new part for modified
+  call airline#parts#define('modified', {
+    \ 'raw': '%m',
+    \ 'accent': 'red',
+    \ })
+
+  " then override the default layout for section c with your new part
+  let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
+endfunction
+autocmd VimEnter * call AirlineInit()
+
 " Syntastic check
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_pylint_post_args="--max-line-length=120"
