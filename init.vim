@@ -47,7 +47,7 @@ command Wq wq
 command W w
 command Q q
 command Ag FzfAg
-command Nt NERDTree
+command Nt NvimTreeToggle
 command Bt belowright split |terminal
 command Is Isort
 nnoremap gr gT
@@ -94,8 +94,6 @@ if executable('ag')
 endif
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 
-let g:NERDTreeWinSize=40
-
 " Airline symnbol setup
 let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''
@@ -118,7 +116,7 @@ autocmd VimEnter * call AirlineInit()
 
 " Syntastic check
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:syntastic_python_pylint_post_args="--max-line-length=80"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -134,11 +132,12 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'sickill/vim-monokai'
 
 " Declare the list of plugins.
-Plug 'preservim/nerdtree'
 Plug 'dracula/vim'
 Plug 'github/copilot.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'preservim/nerdtree'
+" Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'kh3phr3n/python-syntax'
@@ -148,7 +147,22 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'fisadev/vim-isort'
 Plug 'vim-autoformat/vim-autoformat'
+Plug 'vim-syntastic/syntastic'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 
 call plug#end()
+
+" Nvim tree lua post processing
+lua << EOF
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+require("nvim-tree").setup({
+view = {
+    width = 35,
+  },
+})
+EOF
+
 colorscheme carbonfox
 
