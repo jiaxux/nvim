@@ -103,14 +103,14 @@ let g:airline_theme='minimalist'
 
 " Airline setup
 function! AirlineInit()
-  " first define a new part for modified
-  call airline#parts#define('modified', {
-    \ 'raw': '%m',
-    \ 'accent': 'red',
-    \ })
+	" first define a new part for modified
+	call airline#parts#define('modified', {
+				\ 'raw': '%m',
+				\ 'accent': 'red',
+				\ })
 
-  " then override the default layout for section c with your new part
-  let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
+	" then override the default layout for section c with your new part
+	let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
 endfunction
 autocmd VimEnter * call AirlineInit()
 
@@ -159,8 +159,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup({
 view = {
-    width = 35,
-  },
+	width = 35,
+	},
 })
 EOF
 
