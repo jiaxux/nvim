@@ -68,7 +68,7 @@ set number relativenumber
 set nu rnu
 
 " Use system clipboard
-set clipboard=unnamed
+set clipboard+=unnamedplus
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
