@@ -49,7 +49,6 @@ command Q q
 command Ag FzfAg
 command Nt NvimTreeToggle
 command Bt belowright split |terminal
-command Is Isort
 nnoremap gr gT
 nnoremap <C-A-l> :Autoformat<CR>
 nnoremap <C-A-o> :Isort<CR>
@@ -99,7 +98,7 @@ let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.colnr = 'c'
 let g:airline_symbols.linenr = 'l'
-let g:airline_theme='minimalist'
+" let g:airline_theme='minimalist'
 
 " Syntastic check
 let g:syntastic_python_checkers = ['flake8']
@@ -107,7 +106,7 @@ let g:syntastic_python_pylint_post_args="--max-line-length=80"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_cpp_checkers = ['clang_tidy'] 
+let g:syntastic_cpp_checkers = ['clang_tidy']
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_cpp_clang_tidy_args = '-checks=*'
@@ -119,16 +118,16 @@ let g:syntastic_check_on_wq = 0
 " Custom functions
 " diff two files in new vertical split
 function! DiffClipboard()
-    let ft=&ft
-    vertical new
-    setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
-    :1put
-    silent 0d_
-    diffthis
-    setlocal nomodifiable
-    execute "set ft=" . ft
-    wincmd p
-    diffthis
+	let ft=&ft
+	vertical new
+	setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
+	:1put
+	silent 0d_
+	diffthis
+	setlocal nomodifiable
+	execute "set ft=" . ft
+	wincmd p
+	diffthis
 endfunction
 command! DiffClipboard call DiffClipboard()
 
@@ -149,20 +148,16 @@ autocmd VimEnter * call AirlineInit()
 Plug 'morhetz/gruvbox'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'sickill/vim-monokai'
+Plug 'dracula/vim'
 Plug 'navarasu/onedark.nvim'
 
-" Set the theme.
-let g:onedark_config = {
-    \ 'style': 'warmer',
-\}
-
 " Declare the list of plugins.
-Plug 'dracula/vim'
 Plug 'github/copilot.vim'
+Plug 'will133/vim-dirdiff'
+Plug 'sindrets/diffview.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'kh3phr3n/python-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -177,6 +172,11 @@ Plug 'nvim-tree/nvim-web-devicons'
 
 call plug#end()
 
+" Set the theme.
+let g:onedark_config = {
+			\ 'style': 'warmer',
+			\}
+
 " Nvim tree lua post processing
 lua << EOF
 vim.g.loaded_netrw = 1
@@ -184,7 +184,7 @@ vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup({
 view = {
 	width = 35,
-	},
+},
 })
 EOF
 
