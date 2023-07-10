@@ -55,6 +55,22 @@ nnoremap <C-A-l> :Autoformat<CR>
 nnoremap <C-A-o> :Isort<CR>
 tnoremap <Esc> <C-\><C-n>
 
+
+"diff two files in new vertical split
+function! DiffClipboard()
+    let ft=&ft
+    vertical new
+    setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
+    :1put
+    silent 0d_
+    diffthis
+    setlocal nomodifiable
+    execute "set ft=" . ft
+    wincmd p
+    diffthis
+endfunction
+command! DiffClipboard call DiffClipboard()
+
 " Ignore capital letters during search.
 set ignorecase
 
@@ -120,7 +136,10 @@ let g:syntastic_python_pylint_post_args="--max-line-length=80"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
+let g:syntastic_cpp_checkers = ['clang_tidy'] 
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
+let g:syntastic_cpp_clang_tidy_args = '-checks=*'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
