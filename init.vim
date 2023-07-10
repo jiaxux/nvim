@@ -21,8 +21,8 @@ syntax on
 
 " Setup for coc.nvim
 set splitright
-nmap <silent> gd :call CocAction('jumpDefinition', 'tabe')<CR>
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)
+nmap <silent> gd :call CocAction('jumpDefinition')<CR>
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
@@ -54,22 +54,6 @@ nnoremap gr gT
 nnoremap <C-A-l> :Autoformat<CR>
 nnoremap <C-A-o> :Isort<CR>
 tnoremap <Esc> <C-\><C-n>
-
-
-"diff two files in new vertical split
-function! DiffClipboard()
-    let ft=&ft
-    vertical new
-    setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
-    :1put
-    silent 0d_
-    diffthis
-    setlocal nomodifiable
-    execute "set ft=" . ft
-    wincmd p
-    diffthis
-endfunction
-command! DiffClipboard call DiffClipboard()
 
 " Ignore capital letters during search.
 set ignorecase
@@ -117,19 +101,6 @@ let g:airline_symbols.colnr = 'c'
 let g:airline_symbols.linenr = 'l'
 let g:airline_theme='minimalist'
 
-" Airline setup
-function! AirlineInit()
-	" first define a new part for modified
-	call airline#parts#define('modified', {
-				\ 'raw': '%m',
-				\ 'accent': 'red',
-				\ })
-
-	" then override the default layout for section c with your new part
-	let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
-endfunction
-autocmd VimEnter * call AirlineInit()
-
 " Syntastic check
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_pylint_post_args="--max-line-length=80"
@@ -145,19 +116,53 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Custom functions
+" diff two files in new vertical split
+function! DiffClipboard()
+    let ft=&ft
+    vertical new
+    setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
+    :1put
+    silent 0d_
+    diffthis
+    setlocal nomodifiable
+    execute "set ft=" . ft
+    wincmd p
+    diffthis
+endfunction
+command! DiffClipboard call DiffClipboard()
+
+" Airline setup
+function! AirlineInit()
+	" first define a new part for modified
+	call airline#parts#define('modified', {
+				\ 'raw': '%m',
+				\ 'accent': 'red',
+				\ })
+
+	" then override the default layout for section c with your new part
+	let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
+endfunction
+autocmd VimEnter * call AirlineInit()
+
 " Declare the list of themes.
 Plug 'morhetz/gruvbox'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'sickill/vim-monokai'
+Plug 'navarasu/onedark.nvim'
+
+" Set the theme.
+let g:onedark_config = {
+    \ 'style': 'warmer',
+\}
 
 " Declare the list of plugins.
 Plug 'dracula/vim'
 Plug 'github/copilot.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'preservim/nerdtree'
-" Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive'
+Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'kh3phr3n/python-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -183,5 +188,5 @@ view = {
 })
 EOF
 
-colorscheme carbonfox
-
+colorscheme onedark
+" colorscheme carbonfox
