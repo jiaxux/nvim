@@ -98,7 +98,6 @@ let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.colnr = 'c'
 let g:airline_symbols.linenr = 'l'
-" let g:airline_theme='minimalist'
 
 " Syntastic check
 let g:syntastic_python_checkers = ['flake8']
@@ -150,6 +149,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'sickill/vim-monokai'
 Plug 'dracula/vim'
 Plug 'navarasu/onedark.nvim'
+Plug 'catppuccin/nvim'
 
 " Declare the list of plugins.
 Plug 'github/copilot.vim'
