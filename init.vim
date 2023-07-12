@@ -31,6 +31,8 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 " Do not save backup files.
 set nobackup
 
+"Show buffer in airline 
+set showtabline=2
 " Sort imports for python
 let g:vim_isort_python_version = 'python3'
 let g:vim_isort_map = '<C-i>'
@@ -96,8 +98,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 " Airline symnbol setup
 let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.colnr = 'c'
-let g:airline_symbols.linenr = 'l'
+let g:airline_symbols.colnr = ' C'
+let g:airline_symbols.linenr = ' L'
 
 " Syntastic check
 let g:syntastic_python_checkers = ['flake8']
