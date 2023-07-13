@@ -169,7 +169,9 @@ Plug 'tpope/vim-commentary'
 Plug 'fisadev/vim-isort'
 Plug 'vim-autoformat/vim-autoformat'
 Plug 'vim-syntastic/syntastic'
+Plug 'gcmt/wildfire.vim'
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'mg979/vim-visual-multi'
 Plug 'nvim-tree/nvim-web-devicons'
 
 call plug#end()
