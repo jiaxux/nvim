@@ -60,7 +60,7 @@ command Nt NvimTreeToggle
 command St SyntasticToggleMode
 command Bt belowright split |terminal
 nnoremap gr gT
-nnoremap <C-A-l> :Autoformat<CR>
+nnoremap <C-A-l> :call CocAction('format')<CR>
 nnoremap <C-A-o> :Isort<CR>
 tnoremap <Esc> <C-\><C-n>
 
@@ -181,7 +181,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'fisadev/vim-isort'
-Plug 'vim-autoformat/vim-autoformat'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
