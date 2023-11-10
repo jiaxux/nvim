@@ -186,7 +186,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'nvim-tree/nvim-web-devicons'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 
 call plug#end()
