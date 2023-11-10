@@ -31,6 +31,13 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 " Do not save backup files.
 set nobackup
 
+" Cursor line
+:autocmd InsertEnter,InsertLeave * set cul!
+
+" Vim commentary for cpp file
+:autocmd FileType cpp setlocal commentstring=//\ %s
+:autocmd FileType hpp setlocal commentstring=//\ %s
+
 "Show buffer in airline 
 set showtabline=2
 " Sort imports for python
@@ -50,11 +57,17 @@ command W w
 command Q q
 command Ag FzfAg
 command Nt NvimTreeToggle
+command St SyntasticToggleMode
 command Bt belowright split |terminal
 nnoremap gr gT
 nnoremap <C-A-l> :Autoformat<CR>
 nnoremap <C-A-o> :Isort<CR>
 tnoremap <Esc> <C-\><C-n>
+
+" Foldable setup
+set foldmethod=indent 	
+set foldnestmax=1       " Max folding level
+set nofoldenable        " Don't fold by default
 
 " Ignore capital letters during search.
 set ignorecase
@@ -102,6 +115,7 @@ let g:airline_symbols.colnr = ' C'
 let g:airline_symbols.linenr = ' L'
 
 " Syntastic check
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_pylint_post_args="--max-line-length=80"
 set statusline+=%#warningmsg#
@@ -169,10 +183,11 @@ Plug 'tpope/vim-commentary'
 Plug 'fisadev/vim-isort'
 Plug 'vim-autoformat/vim-autoformat'
 Plug 'vim-syntastic/syntastic'
-Plug 'gcmt/wildfire.vim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'nvim-tree/nvim-web-devicons'
+Plugin 'christoomey/vim-tmux-navigator'
+
 
 call plug#end()
 
@@ -190,6 +205,7 @@ view = {
 	width = 35,
 },
 })
+
 EOF
 
 colorscheme onedark
