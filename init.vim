@@ -186,6 +186,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 call plug#end()
@@ -204,6 +205,11 @@ view = {
 	width = 35,
 },
 })
+require('nvim-treesitter.configs').setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true }
+}
 
 EOF
 
