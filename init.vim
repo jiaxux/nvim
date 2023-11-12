@@ -40,6 +40,7 @@ set nobackup
 
 "Show buffer in airline 
 set showtabline=2
+
 " Sort imports for python
 let g:vim_isort_python_version = 'python3'
 let g:vim_isort_map = '<C-i>'
@@ -65,9 +66,9 @@ nnoremap <C-A-o> :Isort<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " Foldable setup
-set foldmethod=indent 	
-set foldnestmax=1       " Max folding level
-set nofoldenable        " Don't fold by default
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable                     " Disable folding at startup.
 
 " Ignore capital letters during search.
 set ignorecase
@@ -80,6 +81,7 @@ set encoding=utf-8
 
 set number relativenumber
 set nu rnu
+
 
 " Use system clipboard
 set clipboard+=unnamedplus
@@ -192,7 +194,7 @@ view = {
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
   highlight = { enable = true },
-  indent = { enable = true }
+  indent = { enable = false }
 }
 
 EOF
