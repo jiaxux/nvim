@@ -87,20 +87,6 @@ set clipboard+=unnamedplus
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-" Python syntax highlighting
-let g:python_highlight_all = 1
-
-" Cpp syntax highlighting
-let g:cpp_function_highlight = 1
-let g:cpp_attributes_highlight = 1
-let g:cpp_member_highlight = 1
-let g:cpp_concepts_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_simple_highlight = 1
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-
 " Speedup ctrlp
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
@@ -174,8 +160,6 @@ Plug 'sindrets/diffview.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'kh3phr3n/python-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
