@@ -176,6 +176,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'lervag/vimtex'
 Plug 'Yggdroot/indentLine'
+Plug 'folke/flash.nvim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -196,6 +197,14 @@ require("nvim-tree").setup({
 view = {
 	width = 35,
 },
+})
+require('flash').setup({
+  flash_on_start = true,
+  modes = {
+    char = {
+      jump_labels = true
+    }
+  }
 })
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
