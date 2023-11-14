@@ -79,9 +79,17 @@ set colorcolumn=80
 " UTF-8 Support
 set encoding=utf-8
 
+" Set the line number
 set number relativenumber
 set nu rnu
 
+"Auto complete the braces
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ` ``<Esc>ha
 
 " Use system clipboard
 set clipboard+=unnamedplus
@@ -145,6 +153,13 @@ function! AirlineInit()
 	" then override the default layout for section c with your new part
 	let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
 endfunction
+
+" Vimtex setup
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 autocmd VimEnter * call AirlineInit()
 
 " Declare the list of themes.
@@ -172,6 +187,8 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
