@@ -91,6 +91,13 @@ inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
 
+" ==================== lazygit.nvim ====================
+noremap <c-g> :LazyGit<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
+let g:lazygit_floating_window_boarder_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
+
 " Use system clipboard
 set clipboard+=unnamedplus
 
@@ -103,12 +110,6 @@ if executable('ag')
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
-
-" Airline symnbol setup
-let g:airline_symbols = {}
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.colnr = ' C'
-let g:airline_symbols.linenr = ' L'
 
 " Syntastic check
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
@@ -142,25 +143,12 @@ function! DiffClipboard()
 endfunction
 command! DiffClipboard call DiffClipboard()
 
-" Airline setup
-function! AirlineInit()
-	" first define a new part for modified
-	call airline#parts#define('modified', {
-				\ 'raw': '%m',
-				\ 'accent': 'red',
-				\ })
-
-	" then override the default layout for section c with your new part
-	let g:airline_section_c = airline#section#create(['%<', '%f', 'modified', ' ', 'readonly'])
-endfunction
-
 " Vimtex setup
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
-autocmd VimEnter * call AirlineInit()
 
 " Declare the list of themes.
 Plug 'morhetz/gruvbox'
@@ -174,8 +162,6 @@ Plug 'catppuccin/nvim'
 Plug 'github/copilot.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'sindrets/diffview.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -186,8 +172,11 @@ Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'lervag/vimtex'
+Plug 'Yggdroot/indentLine'
+Plug 'kdheepak/lazygit.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -212,6 +201,46 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
   highlight = { enable = true },
   indent = { enable = false }
+}
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
 }
 
 EOF
