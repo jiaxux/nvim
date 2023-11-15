@@ -23,6 +23,8 @@ syntax on
 set splitright
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)
 nmap <silent> gd :call CocAction('jumpDefinition')<CR>
+noremap <c-o> :CocOutline<CR>
+let g:coc_global_extensions = ['coc-pyright', 'coc-clangd', 'coc-yaml', 'coc-cmake', 'coc-vimlsp','coc-prettier','coc-marketplace', 'coc-vimtex', 'coc-markdown-preview-enhanced'] 
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
@@ -50,6 +52,10 @@ let g:fzf_command_prefix = 'Fzf'
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 nnoremap <silent> <C-P> :FzfFiles<CR>
 nnoremap <silent> <C-B> :FzfBuffers<CR>
+
+" Map scroll commands
+nnoremap <c-b> <c-u>
+nnoremap <c-f> <c-d>
 
 " Key remappings
 command WQ wq
