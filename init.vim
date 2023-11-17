@@ -57,6 +57,9 @@ nnoremap <silent> <C-B> :FzfBuffers<CR>
 nnoremap <c-b> <c-u>
 nnoremap <c-f> <c-d>
 
+" Smart indent
+set smartindent
+
 " Key remappings
 command WQ wq
 command Wq wq
