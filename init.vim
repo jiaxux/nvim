@@ -43,6 +43,9 @@ set nobackup
 "Show buffer in airline 
 set showtabline=2
 
+"Shift arrow remappings
+set keymodel=startsel
+
 " Sort imports for python
 let g:vim_isort_python_version = 'python3'
 let g:vim_isort_map = '<C-i>'
