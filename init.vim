@@ -227,7 +227,9 @@ require('nvim-treesitter.configs').setup {
   indent = { enable = false }
 }
 
-require("ibl").setup()
+require("ibl").setup{
+  scope = { enabled = false },
+}
 
 require('lualine').setup {
   options = {
