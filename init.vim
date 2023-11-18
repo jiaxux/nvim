@@ -187,7 +187,7 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'lervag/vimtex'
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'folke/flash.nvim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -195,6 +195,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 call plug#end()
+
 
 " Set the theme.
 let g:onedark_config = {
@@ -210,6 +211,7 @@ view = {
 	width = 35,
 },
 })
+
 require('flash').setup({
   flash_on_start = true,
   modes = {
@@ -218,11 +220,15 @@ require('flash').setup({
     }
   }
 })
+
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
   highlight = { enable = true },
   indent = { enable = false }
 }
+
+require("ibl").setup()
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
