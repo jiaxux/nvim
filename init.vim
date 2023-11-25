@@ -50,12 +50,6 @@ set keymodel=startsel
 let g:vim_isort_python_version = 'python3'
 let g:vim_isort_map = '<C-i>'
 
-" Map FZF Commands
-let g:fzf_command_prefix = 'Fzf'
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-nnoremap <silent> <C-P> :FzfFiles<CR>
-nnoremap <silent> <C-B> :FzfBuffers<CR>
-
 " Map scroll commands
 nnoremap <c-b> <c-u>
 nnoremap <c-f> <c-d>
@@ -68,7 +62,6 @@ command WQ wq
 command Wq wq
 command W w
 command Q q
-command Ag FzfAg
 command Nt NvimTreeToggle
 command St SyntasticToggleMode
 command Bt belowright split |terminal
@@ -162,6 +155,11 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
+" FZF lua setup
+nnoremap <c-P> <cmd>lua require('fzf-lua').files()<CR>
+nnoremap <c-s-B> <cmd>lua require('fzf-lua').buffers()<CR>
+nnoremap <c-f> <cmd>lua require('fzf-lua').live_grep()<CR>
+
 " Declare the list of themes.
 Plug 'morhetz/gruvbox'
 Plug 'EdenEast/nightfox.nvim'
@@ -175,8 +173,7 @@ Plug 'github/copilot.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'sindrets/diffview.nvim'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'fisadev/vim-isort'
