@@ -88,14 +88,6 @@ set encoding=utf-8
 set number relativenumber
 set nu rnu
 
-"Auto complete the braces
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
-
 " ==================== lazygit.nvim ====================
 noremap <c-g> :LazyGit<CR>
 let g:lazygit_floating_window_winblend = 0 " transparency of floating window
@@ -188,6 +180,7 @@ Plug 'lervag/vimtex'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'folke/flash.nvim'
 Plug 'kdheepak/lazygit.nvim'
+Plug 'windwp/nvim-autopairs'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -269,6 +262,8 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+
+require("nvim-autopairs").setup {}
 
 EOF
 
