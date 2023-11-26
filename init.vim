@@ -150,8 +150,8 @@ let g:tex_conceal='abdmg'
 " FZF lua setup
 nnoremap <c-P> <cmd>lua require('fzf-lua').files()<CR>
 nnoremap <c-s-B> <cmd>lua require('fzf-lua').buffers()<CR>
-nnoremap <c-f> <cmd>lua require('fzf-lua').grep_project()<CR>
-nnoremap <C-A-f> <cmd>lua require('fzf-lua').live_grep()<CR>
+nnoremap <c-f> <cmd>lua require('fzf-lua').live_grep()<CR>
+nnoremap <C-A-f> <cmd>lua require('fzf-lua').grep_project()<CR>
 
 " Declare the list of themes.
 Plug 'morhetz/gruvbox'
