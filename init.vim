@@ -24,7 +24,7 @@ set splitright
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)
 nmap <silent> gd :call CocAction('jumpDefinition')<CR>
 noremap <c-o> :CocOutline<CR>
-let g:coc_global_extensions = ['coc-pyright', 'coc-clangd', 'coc-yaml', 'coc-cmake', 'coc-vimlsp','coc-prettier','coc-marketplace', 'coc-vimtex', 'coc-markdown-preview-enhanced'] 
+let g:coc_global_extensions = ['coc-pyright', 'coc-clangd', 'coc-yaml', 'coc-pairs', 'coc-cmake', 'coc-vimlsp','coc-prettier','coc-marketplace', 'coc-vimtex', 'coc-markdown-preview-enhanced'] 
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
@@ -180,7 +180,6 @@ Plug 'lervag/vimtex'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'folke/flash.nvim'
 Plug 'kdheepak/lazygit.nvim'
-Plug 'windwp/nvim-autopairs'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -262,8 +261,6 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
-
-require("nvim-autopairs").setup {}
 
 EOF
 
