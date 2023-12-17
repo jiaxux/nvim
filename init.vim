@@ -169,6 +169,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ibhagwan/fzf-lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
+Plug 'goolord/alpha-nvim'
 Plug 'fisadev/vim-isort'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -211,6 +212,8 @@ require('flash').setup({
   }
 })
 
+require('alpha').setup(require('alpha.themes.startify').opts)
+
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
   highlight = { enable = true },
@@ -220,11 +223,11 @@ require('nvim-treesitter.configs').setup {
 require("ibl").setup{
   scope = { enabled = false },
 }
-
 require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
+    globalstatus = True,
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
