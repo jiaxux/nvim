@@ -173,7 +173,7 @@ Plug 'goolord/alpha-nvim'
 Plug 'fisadev/vim-isort'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
-Plug 'mg979/vim-visual-multi'
+Plug 'kylechui/nvim-surround'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -246,6 +246,7 @@ require('nvim-treesitter.configs').setup {
 require("ibl").setup{
   scope = { enabled = false },
 }
+require("nvim-surround").setup()
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -269,7 +270,7 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_c = {{'filename', path = 1}},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
