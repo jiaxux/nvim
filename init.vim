@@ -104,7 +104,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Speedup ctrlp
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 
@@ -127,16 +127,16 @@ let g:syntastic_check_on_wq = 0
 " Custom functions
 " diff two files in new vertical split
 function! DiffClipboard()
-	let ft=&ft
-	vertical new
-	setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
-	:1put
-	silent 0d_
-	diffthis
-	setlocal nomodifiable
-	execute "set ft=" . ft
-	wincmd p
-	diffthis
+let ft=&ft
+vertical new
+setlocal bufhidden=wipe buftype=nofile nobuflisted noswapfile
+:1put
+silent 0d_
+diffthis
+setlocal nomodifiable
+execute "set ft=" . ft
+wincmd p
+diffthis
 endfunction
 command! DiffClipboard call DiffClipboard()
 
@@ -198,6 +198,10 @@ let g:onedark_config = {
 lua << EOF
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
+vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
+vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
+vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
 require("nvim-tree").setup({
 view = {
 	width = 35,
@@ -232,6 +236,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "f", "  > Find file", ":FzfLua files<CR>"),
     dashboard.button( "r", "󰈢  > Recent", ":FzfLua oldfiles<CR>"),
     dashboard.button( "s", "  > Settings" , ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+    dashboard.button( "b", "  > Bash" , ":e ~/.bashrc | pwd<CR>"),
     dashboard.button( "q", "󰅚  > Quit NVIM", ":qa<CR>"),
 }
 dashboard.section.header.opts.hl = "Function"
