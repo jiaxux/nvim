@@ -184,6 +184,8 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'mrjones2014/smart-splits.nvim' 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'm4xshen/hardtime.nvim'
+Plug 'nvim-lua/plenary.nvim'
 
 
 call plug#end()
@@ -252,6 +254,7 @@ require('nvim-treesitter.configs').setup {
 require("ibl").setup{
   scope = { enabled = false },
 }
+require("hardtime").setup()
 require('smart-splits').setup({
   -- Ignored buffer types (only while resizing)
   ignored_buftypes = {
