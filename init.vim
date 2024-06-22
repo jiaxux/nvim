@@ -54,6 +54,7 @@ let g:vim_isort_map = '<C-i>'
 nnoremap <c-b> <c-u>
 nnoremap <c-f> <c-d>
 
+set noshowmode
 " Smart indent
 set smartindent
 
@@ -176,7 +177,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'kylechui/nvim-surround'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'lervag/vimtex'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'folke/flash.nvim'
@@ -186,6 +187,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'm4xshen/hardtime.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'tris203/precognition.nvim'
 
 
 call plug#end()
@@ -254,7 +256,10 @@ require('nvim-treesitter.configs').setup {
 require("ibl").setup{
   scope = { enabled = false },
 }
-require("hardtime").setup()
+require('precognition').setup()
+require("hardtime").setup({
+event = 'VeryLazy',
+   })
 require('smart-splits').setup({
   -- Ignored buffer types (only while resizing)
   ignored_buftypes = {
