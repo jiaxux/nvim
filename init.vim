@@ -187,7 +187,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'm4xshen/hardtime.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'tris203/precognition.nvim'
 
 
 call plug#end()
@@ -256,10 +255,6 @@ require('nvim-treesitter.configs').setup {
 require("ibl").setup{
   scope = { enabled = false },
 }
-require('precognition').setup()
-require("hardtime").setup({
-event = 'VeryLazy',
-   })
 require('smart-splits').setup({
   -- Ignored buffer types (only while resizing)
   ignored_buftypes = {
