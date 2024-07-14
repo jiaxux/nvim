@@ -170,7 +170,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ibhagwan/fzf-lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
-Plug 'goolord/alpha-nvim'
+" Plug 'goolord/alpha-nvim'
 Plug 'fisadev/vim-isort'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -219,32 +219,6 @@ require('flash').setup({
     }
   }
 })
-
-local alpha = require("alpha")
-local dashboard = require("alpha.themes.dashboard")
-
--- Set header
-dashboard.section.header.val = {
-    "                                                     ",
-    "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-    "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-    "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-    "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-    "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-    "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-    "                                                     ",
-}
-dashboard.section.buttons.val = {
-    dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "f", "  > Find file", ":FzfLua files<CR>"),
-    dashboard.button( "r", "󰈢  > Recent", ":FzfLua oldfiles<CR>"),
-    dashboard.button( "s", "  > Settings" , ":e $MYVIMRC | pwd<CR>"),
-    dashboard.button( "b", "  > Bash" , ":e ~/.bashrc | pwd<CR>"),
-    dashboard.button( "q", "󰅚  > Quit NVIM", ":qa<CR>"),
-}
-dashboard.section.header.opts.hl = "Function"
-dashboard.section.footer.opts.hl = "Function"
-require('alpha').setup(dashboard.opts)
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
