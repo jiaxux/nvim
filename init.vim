@@ -54,6 +54,14 @@ let g:vim_isort_map = '<C-i>'
 nnoremap <c-b> <c-u>
 nnoremap <c-f> <c-d>
 
+"Nvim Tmux navigation
+nnoremap <silent> <C-h> <Cmd>NvimTmuxNavigateLeft<CR>
+nnoremap <silent> <C-j> <Cmd>NvimTmuxNavigateDown<CR>
+nnoremap <silent> <C-k> <Cmd>NvimTmuxNavigateUp<CR>
+nnoremap <silent> <C-l> <Cmd>NvimTmuxNavigateRight<CR>
+nnoremap <silent> <C-\> <Cmd>NvimTmuxNavigateLastActive<CR>
+nnoremap <silent> <C-Space> <Cmd>NvimTmuxNavigateNext<CR>
+
 set noshowmode
 " Smart indent
 set smartindent
@@ -187,6 +195,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'm4xshen/hardtime.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'alexghergh/nvim-tmux-navigation'
+
 
 
 call plug#end()
@@ -229,6 +239,11 @@ require('nvim-treesitter.configs').setup {
 require("ibl").setup{
   scope = { enabled = false },
 }
+
+require'nvim-tmux-navigation'.setup {
+    disable_when_zoomed = true -- defaults to false
+}
+
 require('smart-splits').setup({
   -- Ignored buffer types (only while resizing)
   ignored_buftypes = {
