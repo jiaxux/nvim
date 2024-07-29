@@ -178,7 +178,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'ibhagwan/fzf-lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
-" Plug 'goolord/alpha-nvim'
 Plug 'fisadev/vim-isort'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
@@ -193,7 +192,6 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'mrjones2014/smart-splits.nvim' 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'm4xshen/hardtime.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'alexghergh/nvim-tmux-navigation'
 
