@@ -167,6 +167,7 @@ Plug 'morhetz/gruvbox'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'sickill/vim-monokai'
 Plug 'dracula/vim'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'catppuccin/nvim'
 
@@ -377,5 +378,6 @@ require('lualine').setup {
 
 EOF
 
-colorscheme onedark
+" colorscheme onedark
+colorscheme kanagawa
 " colorscheme carbonfox
