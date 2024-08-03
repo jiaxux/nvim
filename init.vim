@@ -73,7 +73,10 @@ command W w
 command Q q
 command Nt NvimTreeToggle
 command St SyntasticToggleMode
-command Bt belowright split |terminal
+command Dv DiffviewOpen
+command Df DiffviewFileHistory
+command Dc DiffviewClose
+command Dcl DiffClipboard
 nnoremap gr gT
 nnoremap <C-A-l> :call CocAction('format')<CR>
 nnoremap <C-A-o> :Isort<CR>
