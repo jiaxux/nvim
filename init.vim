@@ -381,6 +381,6 @@ require('lualine').setup {
 
 EOF
 
-colorscheme onedark
-" colorscheme kanagawa
+" colorscheme onedark
+colorscheme kanagawa
 " colorscheme carbonfox
