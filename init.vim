@@ -19,6 +19,9 @@ filetype indent on
 " Turn syntax highlighting on.
 syntax on
 
+" Set the leader key to a comma.
+let mapleader = ","
+
 " Setup for coc.nvim
 set splitright
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)
@@ -198,7 +201,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'alexghergh/nvim-tmux-navigation'
-
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'rcarriga/nvim-dap-ui'
 
 
 call plug#end()
@@ -223,6 +229,7 @@ view = {
 },
 })
 
+require("dap-python").setup("/home/jixing/mambaforge/envs/fly-habitat/bin/python")
 require('flash').setup({
   flash_on_start = true,
   modes = {
@@ -378,6 +385,24 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+
+local dap, dapui = require("dap"), require("dapui")
+dapui.setup()
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
+
+vim.keymap.set('n', '<leader>dc', '<Cmd>lua require"dap".continue()<CR>')
+vim.keymap.set('n', '<leader>db', '<Cmd>lua require"dap".toggle_breakpoint()<CR>')
 
 EOF
 
