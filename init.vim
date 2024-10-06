@@ -27,7 +27,8 @@ set splitright
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)
 nmap <silent> gd :call CocAction('jumpDefinition')<CR>
 noremap <c-o> :CocOutline<CR>
-let g:coc_global_extensions = ['coc-pyright', 'coc-clangd', 'coc-yaml', 'coc-pairs', 'coc-cmake', 'coc-vimlsp','coc-prettier','coc-marketplace', 'coc-vimtex', 'coc-markdown-preview-enhanced'] 
+nnoremap <silent> <c-y>  :<C-u>CocList -A --normal yank<cr>
+let g:coc_global_extensions = ['coc-pyright', 'coc-yank', 'coc-clangd', 'coc-yaml', 'coc-pairs', 'coc-cmake', 'coc-vimlsp','coc-prettier','coc-marketplace', 'coc-vimtex', 'coc-markdown-preview-enhanced'] 
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
