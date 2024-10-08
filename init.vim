@@ -237,17 +237,31 @@ require('avante_lib').load()
 require('avante').setup ({
   -- Your config here!{
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-  provider = "claude", -- Recommend using Claude
-  auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+  provider = "openai", -- Recommend using Claude
+   ---@type AvanteSupportedProvider
+  openai = {
+    endpoint = "https://api.openai.com/v1",
+    model = "gpt-4o",
+    timeout = 30000, -- Timeout in milliseconds
+    temperature = 0,
+    max_tokens = 4096,
+    ["local"] = false,
+  },
+  ---@type AvanteSupportedProvider
+  copilot = {
+    endpoint = "https://api.githubcopilot.com",
+    model = "gpt-4o-2024-05-13",
+    proxy = nil, -- [protocol://]host[:port] Use this proxy
+    allow_insecure = false, -- Allow insecure server connections
+    timeout = 30000, -- Timeout in milliseconds
+    temperature = 0,
+    max_tokens = 4096,
+  },
   claude = {
     endpoint = "https://api.anthropic.com",
     model = "claude-3-5-sonnet-20240620",
     temperature = 0,
     max_tokens = 4096,
-  },
-  openai = {
-    endpoint = "https://api.openai.com/v1/", -- The full endpoint of the provider
-    model = "gpt-4o-mini"
   },
   behaviour = {
     auto_suggestions = false, -- Experimental stage
