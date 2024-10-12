@@ -237,7 +237,7 @@ require('avante_lib').load()
 require('avante').setup ({
   -- Your config here!{
   ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-  provider = "openai", -- Recommend using Claude
+  provider = "claude", -- Recommend using Claude
    ---@type AvanteSupportedProvider
   openai = {
     endpoint = "https://api.openai.com/v1",
