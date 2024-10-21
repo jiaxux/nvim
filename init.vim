@@ -26,6 +26,7 @@ let mapleader = ","
 set splitright
 nmap <silent> gv :vsp<CR><Plug>(coc-definition)
 nmap <silent> gd :call CocAction('jumpDefinition')<CR>
+nmap <silent> gn :call CocAction('jumpDefinition', 'tabe')<CR>
 noremap <c-o> :CocOutline<CR>
 nnoremap <silent> <c-y>  :<C-u>CocList -A --normal yank<cr>
 let g:coc_global_extensions = ['coc-pyright', 'coc-yank', 'coc-clangd', 'coc-yaml', 'coc-pairs', 'coc-cmake', 'coc-vimlsp','coc-prettier','coc-marketplace', 'coc-vimtex', 'coc-markdown-preview-enhanced'] 
