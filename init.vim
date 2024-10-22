@@ -229,11 +229,13 @@ vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
 vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
 vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
 vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+vim.keymap.set('n', '<Leader>l', '<Cmd>noh<CR>')
 require("nvim-tree").setup({
 view = {
 	width = 35,
 },
 })
+
 require('avante_lib').load()
 require('avante').setup ({
   -- Your config here!{
@@ -332,6 +334,16 @@ require('flash').setup({
   modes = {
     char = {
       jump_labels = true
+    },
+    search = {
+      enabled = true, -- Enables the enhanced `/` functionality
+      highlight = {
+        backdrop = true, -- Highlights the search matches in the background
+      },
+      jump = {
+        autojump = true, -- Automatically jumps to the first match on `/`
+      },
+      -- You can further customize the labels for the search highlights here
     }
   }
 })
