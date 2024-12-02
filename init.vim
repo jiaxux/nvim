@@ -349,6 +349,17 @@ require('flash').setup({
       },
       -- You can further customize the labels for the search highlights here
     }
+  },
+  -- Add a custom callback to handle not found patterns
+  search = {
+    callback = function(opts)
+      -- If no matches are found, show a warning
+      if #opts.matches == 0 then
+        vim.api.nvim_echo({{string.format("Pattern not found: %s", opts.search), "WarningMsg"}}, true, {})
+        return false
+      end
+      return true
+    end
   }
 })
 
