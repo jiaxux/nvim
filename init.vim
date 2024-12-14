@@ -129,21 +129,21 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*
 
-" Syntastic check
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_pylint_post_args="--max-line-length=80"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_cpp_checkers = ['clang_tidy']
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
-let g:syntastic_cpp_clang_tidy_args = '-checks=*'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" " Syntastic check
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+" let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_python_pylint_post_args="--max-line-length=80"
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_cpp_checkers = ['clang_tidy']
+" let g:syntastic_cpp_check_header = 1
+" let g:syntastic_cpp_auto_refresh_includes = 1
+" let g:syntastic_cpp_clang_tidy_args = '-checks=*'
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " Custom functions
 " diff two files in new vertical split
@@ -185,14 +185,12 @@ Plug 'catppuccin/nvim'
 
 " Declare the list of plugins.
 Plug 'github/copilot.vim'
-Plug 'will133/vim-dirdiff'
 Plug 'sindrets/diffview.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'ibhagwan/fzf-lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'fisadev/vim-isort'
-Plug 'vim-syntastic/syntastic'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'kylechui/nvim-surround'
 Plug 'nvim-tree/nvim-web-devicons'

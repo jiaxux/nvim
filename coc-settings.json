@@ -4,4 +4,5 @@
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--line-length", "79"],
+  "yank.highlight.duration": 0
 }
