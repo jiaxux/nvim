@@ -1,0 +1,42 @@
+-- bootstrap lazy.nvim
+---@diagnostic disable: undefined-global
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Plugin Specification
+require("lazy").setup({
+	require("configs.plugins.kanagawa"),
+	require("configs.plugins.copilot"),
+	require("configs.plugins.diffview"),
+	require("configs.plugins.fugitive"),
+	require("configs.plugins.fzf-lua"),
+	require("configs.plugins.coc"),
+	require("configs.plugins.commentary"),
+	require("configs.plugins.isort"),
+	require("configs.plugins.nvim-tree"),
+	require("configs.plugins.nvim-surround"),
+	require("configs.plugins.lualine"),
+	require("configs.plugins.vimtex"),
+	require("configs.plugins.indent-blankline"),
+	require("configs.plugins.flash"),
+	require("configs.plugins.lazygit"),
+	require("configs.plugins.smart-splits"),
+	require("configs.plugins.markdown-preview"),
+	require("configs.plugins.nvim-treesitter"),
+	require("configs.plugins.nvim-tmux-navigation"),
+	require("configs.plugins.nvim-dap"),
+	require("configs.plugins.dressing"),
+	require("configs.plugins.nui"),
+	require("configs.plugins.avante"),
+})
+

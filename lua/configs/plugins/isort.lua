@@ -1,0 +1,5 @@
+return {
+	{
+		"fisadev/vim-isort"
+	}
+}
