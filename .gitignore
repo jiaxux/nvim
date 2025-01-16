@@ -1,1 +1,15 @@
 start
+*.swp
+.DS_Store
+view/
+plugged/
+sessions/
+autoload/plug.vim.old
+tmp/
+.netrwhist
+_machine_specific.vim
+.vim-bookmarks
+_local_plugins/
+lazy-lock.json
+
+lua/config/machine_specific.lua
