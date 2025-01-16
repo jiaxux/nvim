@@ -5,7 +5,7 @@ local keymap = vim.keymap.set
 -- General mappings
 keymap("n", "gr", "gT")
 keymap("n", "<C-A-l>", ":call CocAction('format')<CR>")
-keymap("n", "<C-A-o>", ":Isort<CR>")
+keymap("n", "<leader>i", ":Isort<CR>")
 keymap("t", "<Esc>", "<C-\\><C-n>")
 
 
