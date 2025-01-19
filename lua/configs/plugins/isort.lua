@@ -1,5 +1,0 @@
-return {
-	{
-		"fisadev/vim-isort"
-	}
-}
