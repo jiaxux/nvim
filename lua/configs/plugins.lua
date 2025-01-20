@@ -21,6 +21,7 @@ require("lazy").setup({
 	require("configs.plugins.fugitive"),
 	require("configs.plugins.fzf-lua"),
 	require("configs.plugins.yanky"),
+	require("configs.plugins.noice"),
 	require("configs.plugins.mason"),
 	require("configs.plugins.lspconfig"),
 	require("configs.plugins.formatting"),
