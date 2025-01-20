@@ -1,7 +1,6 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		lazy = true,
 		config = function()
 			-- DAP Keymaps
 			vim.keymap.set("n", "<leader>dc", '<Cmd>lua require"dap".continue()<CR>')
