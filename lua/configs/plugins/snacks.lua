@@ -6,7 +6,7 @@ return {
 	opts = {
 		bigfile = { enabled = false },
 		indent = { enabled = true },
-		input = { enabled = false },
+		input = { enabled = true },
 		notifier = {
 			enabled = false,
 			timeout = 30,
@@ -50,20 +50,6 @@ return {
 				Snacks.lazygit.log_file()
 			end,
 			desc = "Lazygit Current File History",
-		},
-		{
-			"<C-g>",
-			function()
-				Snacks.lazygit()
-			end,
-			desc = "Lazygit",
-		},
-		{
-			"<leader>gl",
-			function()
-				Snacks.lazygit.log()
-			end,
-			desc = "Lazygit Log (cwd)",
 		},
 		{
 			"]]",
