@@ -15,15 +15,11 @@ return {
 			}
 		})
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_language_server",
+			ensure_installed = { "lua_ls",
 				"pyright",
 				"clangd",
-				"prettier",
 				"texlab",
-				"yaml-language-server",
-				"black",
-				"clang-format",
-				"codelldb",
+				"yamlls",
 				"cmake",
 			},
 			automatic_installation = true,
