@@ -29,7 +29,6 @@ require("lazy").setup({
 	require("configs.plugins.commentary"),
 	require("configs.plugins.lazygit"),
 	require("configs.plugins.nvim-tree"),
-	require("configs.plugins.orgmode"),
 	require("configs.plugins.nvim-surround"),
 	require("configs.plugins.lualine"),
 	require("configs.plugins.vimtex"),
