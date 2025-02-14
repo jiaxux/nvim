@@ -32,6 +32,9 @@ vim.cmd([[
   command! W w
   command! Q q
   command! Nt NvimTreeToggle
+  command! Os ObsidianSearch
+  command! Oo ObsidianOpen
+  command! On ObsidianNew
   command! St SyntasticToggleMode
   command! Dv DiffviewOpen
   command! Df DiffviewFileHistory
