@@ -32,7 +32,6 @@ require("lazy").setup({
 	require("configs.plugins.nvim-tree"),
 	require("configs.plugins.nvim-surround"),
 	require("configs.plugins.lualine"),
-	require("configs.plugins.obsidian"),
 	require("configs.plugins.vimtex"),
 	require("configs.plugins.nvim-autopairs"),
 	require("configs.plugins.flash"),
