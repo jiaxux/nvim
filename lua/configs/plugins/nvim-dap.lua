@@ -3,8 +3,25 @@ return {
 		"mfussenegger/nvim-dap",
 		config = function()
 			-- DAP Keymaps
-			vim.keymap.set("n", "<leader>dc", '<Cmd>lua require"dap".continue()<CR>')
-			vim.keymap.set("n", "<leader>db", '<Cmd>lua require"dap".toggle_breakpoint()<CR>')
+			-- Basic debugging
+			vim.keymap.set("n", "<leader>dc", '<Cmd>lua require"dap".continue()<CR>', { desc = "Debug: Continue" })
+			vim.keymap.set(
+				"n",
+				"<leader>db",
+				'<Cmd>lua require"dap".toggle_breakpoint()<CR>',
+				{ desc = "Debug: Toggle Breakpoint" }
+			)
+
+			-- UI control
+			vim.keymap.set("n", "<leader>du", function()
+				require("dapui").toggle()
+			end, { desc = "Debug: Toggle UI" })
+			vim.keymap.set("n", "<leader>de", function()
+				require("dapui").eval()
+			end, { desc = "Debug: Evaluate Expression" })
+			vim.keymap.set("v", "<leader>de", function()
+				require("dapui").eval()
+			end, { desc = "Debug: Evaluate Expression" })
 			require("dap-python").setup("/home/jixing/mambaforge/envs/fly-habitat/bin/python")
 			-- DAP UI Setup
 			local dap, dapui = require("dap"), require("dapui")
