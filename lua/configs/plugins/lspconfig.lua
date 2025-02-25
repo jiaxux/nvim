@@ -55,12 +55,28 @@ return {
 		end
 
 		-- Setup each LSP server with capabilities and key mappings
-		local servers = { "clangd", "pyright", "texlab", "lua_ls" }
+		local servers = { "pyright", "texlab", "lua_ls" }
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
 		end
+
+		-- Special setup for clangd with offset encoding
+		lspconfig.clangd.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = {
+				"clangd",
+				"--offset-encoding=utf-16",
+				"--background-index",
+				"--clang-tidy",
+				"--header-insertion=iwyu",
+				"--completion-style=detailed",
+				"--function-arg-placeholders",
+				"--fallback-style=llvm",
+			},
+		})
 	end,
 }
