@@ -36,6 +36,7 @@ require("lazy").setup({
 	require("configs.plugins.nvim-autopairs"),
 	require("configs.plugins.flash"),
 	require("configs.plugins.smart-splits"),
+	require("configs.plugins.gitsigns"),
 	require("configs.plugins.nvim-treesitter"),
 	require("configs.plugins.nvim-tmux-navigation"),
 	require("configs.plugins.nvim-dap"),
