@@ -55,13 +55,36 @@ return {
 		end
 
 		-- Setup each LSP server with capabilities and key mappings
-		local servers = { "pyright", "texlab", "lua_ls" }
+		local servers = { "texlab", "lua_ls" }
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
 		end
+
+		-- Special setup for pyright to use the correct Python environment
+		lspconfig.pyright.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = "workspace",
+					},
+					-- Pyright will look for a Python environment in this order:
+					-- 1. pyproject.toml in the workspace
+					-- 2. poetry.lock in the workspace
+					-- 3. requirements.txt in the workspace
+					-- 4. venv directory in the workspace
+					-- 5. .venv directory in the workspace
+					-- 6. If none found, it will use the path specified here
+					pythonPath = vim.fn.exepath("python"), -- This will use the Python in your PATH
+				},
+			},
+		})
 
 		-- Special setup for clangd with offset encoding
 		lspconfig.clangd.setup({
