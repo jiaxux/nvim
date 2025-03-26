@@ -24,14 +24,13 @@ return {
 		local cmp = require("cmp")
 		local defaults = require("cmp.config.default")()
 		local lspkind = require("lspkind")
-		local auto_select = true
 
 		return {
 			auto_brackets = {}, -- configure any filetype to auto add brackets
 			completion = {
-				completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
+				completeopt = "menu,menuone,noinsert",
 			},
-			preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+			preselect = cmp.PreselectMode.Item,
 			mapping = cmp.mapping.preset.insert({
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -40,7 +39,6 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = auto_select }),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp", priority = 1000 },
