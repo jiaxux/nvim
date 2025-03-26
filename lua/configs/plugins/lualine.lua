@@ -31,7 +31,7 @@ return {
 						file_status = true,
 						newfile_status = true,
 						shorting_target = 40, -- Shorten path if it's longer than this
-						color = { fg = "#7aa2f7", gui = "bold" }, -- Use bright blue color and bold
+						color = { fg = "#626c99"}, -- Medium-bright blue color
 					},
 				},
 				lualine_x = {},
