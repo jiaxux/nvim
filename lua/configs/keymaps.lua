@@ -3,7 +3,7 @@
 local keymap = vim.keymap.set
 
 -- General mappings
-keymap("n", "gr", "gT")
+keymap("n", "gr", "<cmd>tabprevious<CR>", {nowait = true})
 keymap("n", "<leader>i", ":Isort<CR>")
 keymap("t", "<Esc>", "<C-\\><C-n>")
 
