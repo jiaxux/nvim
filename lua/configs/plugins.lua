@@ -22,6 +22,7 @@ require("lazy").setup({
 	require("configs.plugins.yanky"),
 	require("configs.plugins.snacks"),
 	require("configs.plugins.mason"),
+	require("configs.plugins.tiny-inline-diagnostics"),
 	require("configs.plugins.lspconfig"),
 	require("configs.plugins.formatting"),
 	require("configs.plugins.nvim-lint"),

@@ -22,16 +22,16 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
 
 -- Virtual Lines
-vim.diagnostic.config({
-	-- Use the default configuration
-	virtual_lines = true,
+-- vim.diagnostic.config({
+-- 	-- Use the default configuration
+-- 	virtual_lines = true,
 
-	-- Alternatively, customize specific options
-	-- virtual_lines = {
-	--  -- Only show virtual line diagnostics for the current cursor line
-	--  current_line = true,
-	-- },
-})
+-- 	-- Alternatively, customize specific options
+-- 	-- virtual_lines = {
+-- 	--  -- Only show virtual line diagnostics for the current cursor line
+-- 	--  current_line = true,
+-- 	-- },
+-- })
 
 -- Vimtex
 vim.g.tex_flavor = "latex"
