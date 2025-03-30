@@ -4,7 +4,7 @@ local keymap = vim.keymap.set
 
 -- General mappings
 keymap("n", "gr", "<cmd>tabprevious<CR>", {nowait = true})
-keymap("n", "<leader>i", ":Isort<CR>")
+keymap("n", "<leader>n", "<cmd>NvimTreeToggle<CR>", {nowait = true})
 keymap("t", "<Esc>", "<C-\\><C-n>")
 
 
@@ -31,11 +31,9 @@ vim.cmd([[
   command! Wq wq
   command! W w
   command! Q q
-  command! Nt NvimTreeToggle
   command! Os ObsidianSearch
   command! Oo ObsidianOpen
   command! On ObsidianNew
-  command! St SyntasticToggleMode
   command! Dv DiffviewOpen
   command! Df DiffviewFileHistory
   command! Dc DiffviewClose

@@ -1,4 +1,3 @@
--- bootstrap lazy.nvim
 ---@diagnostic disable: undefined-global
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -29,7 +28,7 @@ require("lazy").setup({
 	require("configs.plugins.nvim-cmp"),
 	require("configs.plugins.commentary"),
 	require("configs.plugins.lazygit"),
-	require("configs.plugins.yazi"),
+	require("configs.plugins.oil"),
 	require("configs.plugins.nvim-tree"),
 	require("configs.plugins.nvim-surround"),
 	require("configs.plugins.lualine"),
