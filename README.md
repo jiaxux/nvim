@@ -1,21 +1,82 @@
-# personal neovim configs
+# Personal neovim configs
 
-For `syntastic`, you will need to install `flake8`.
-To use `nvim-tree`, you will need to download patched font to visualize the icons correctly.
-Otherwise use `nerdtree`.
-You have to install `node.js` and `yarn` to use the markdown preview feature
-You have to `sudo apt-get install xclip` to enable sharing clipboard between your vim and system clipboard.
+This is a personal Neovim configuration built with Lua, designed for a productive and enjoyable coding experience. It incorporates a variety of plugins and settings to enhance functionality and aesthetics.
 
-## CoC stuff
-Currently there are many `coc` plugins avaiable, the ones we usually use:
+## 🚀 Features
+
+-   **Core Configuration:**
+    -   `options.lua`: Configures basic Neovim settings and options.
+    -   `keymaps.lua`: Defines custom key mappings for improved navigation and workflow.
+
+-   **Plugin Management:**
+    -   `plugins-setup.lua`: Manages plugin installation and loading using a plugin manager.
+
+-   **Language Server Protocol (LSP):**
+    -   `lspconfig.lua`: Configures LSP settings for various languages, providing features like auto-completion, diagnostics, and code formatting.
+
+-   **Completion Framework:**
+    -   `nvim-cmp.lua`: Configures the `nvim-cmp` completion plugin for intelligent code completion.
+
+-   **Fuzzy Finder:**
+    -   `telescope.lua`: Sets up Telescope for fast file searching, buffer management, and more.
+
+-   **Visual Enhancements:**
+    -   `indent-blankline.lua`: Configures indent blanklines for improved code readability.
+    -   `gruvbox.lua`: Applies the Gruvbox colorscheme for a visually appealing interface.
+    -   `bufferline.lua`: Configures the bufferline plugin for managing open buffers.
+    -   `lualine.lua`: Configures the lualine plugin for a customizable statusline.
+
+-   **Utility Plugins:**
+    -   `comment_nvim.lua`: Configures `comment.nvim` for easy code commenting.
+    -   `nvim-tree.lua`: Sets up `nvim-tree` for file system navigation.
+    -   `autopairs.lua`: Configures automatic bracket and quote pairing.
+	-   `project.lua`: Configures project management.
+	-   `git.lua`: Configures git-related plugins.
+
+-   **Custom Configurations:**
+    -   `configs/plugins/avante.lua`: Custom configurations for the Avante plugin.
+
+## 🛠️ Installation
+
+1.  **Prerequisites:**
+    -   Neovim (v0.5 or higher)
+    -   A plugin manager (e.g., [vim-plug](https://github.com/junegunn/vim-plug), [lazy.nvim](https://github.com/folke/lazy.nvim))
+
+2.  **Clone the Repository:**
+
+    ```bash
+    git clone <repository_url> ~/.config/nvim
+    ```
+
+3.  **Install Plugins:**
+
+    Open Neovim and run the plugin installation command for your plugin manager (e.g., `:PlugInstall` for vim-plug, `:Lazy` for lazy.nvim).
+
+## ⚙️ Usage
+
+-   Explore the `lua/core/keymaps.lua` file to discover useful key mappings.
+-   Customize plugin settings in the respective files within the `lua/plugins/` directory.
+-   Use the `:Telescope` command to access Telescope's features.
+
+## 📂 File Structure
+
 ```
-:CocInstall coc-pyright
-:CocInstall coc-clangd
-:CocInstall coc-yaml
-:CocInstall coc-cmake
+~/.config/nvim/
+├── init.lua
+├── lua/
+│   ├── core/
+│   │   ├── options.lua
+│   │   └── keymaps.lua
+│   ├── plugins/
+│   │   ├── plugins-setup.lua
+│   │   ├── lspconfig.lua
+│   │   ├── .
+│   │   ├── .
+│   │   ├── .
+│   │   └── avante.lua 
+│   └── configs/
+│       └── plugins/
+│           └── avante.lua
+└── README.md
 ```
-This will help set up the lsp and enhance many stuff.
-To fully use `clangd` we will have to install it first through `sudo apt install clangd-12`
 
-## vim-markdown-preview
-Since we use `Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }` to install the plugin, it must be the prebuild bundle download fail. Try `:call mkdp#until#install()` again.

@@ -5,9 +5,10 @@ return {
 		lazy = false,
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
-			provider = "claude",
+			provider = "gemini",
+			-- provider = "openai",
+			-- provider = "claude",
 			claude = {
-				endpoint = "https://api.anthropic.com",
 				model = "claude-3-5-sonnet-20241022",
 				temperature = 0,
 				max_tokens = 4096,
