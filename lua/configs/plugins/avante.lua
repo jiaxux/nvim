@@ -13,6 +13,10 @@ return {
 				temperature = 0,
 				max_tokens = 4096,
 			},
+			gemini = {
+				-- model = "gemini-2.5-pro-preview-05-06",
+				model = "gemini-2.5-flash-preview-04-17",
+			},
 			vendors = {
 				deepseek = {
 					__inherited_from = "openai",
