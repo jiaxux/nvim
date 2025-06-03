@@ -5,26 +5,38 @@ return {
 		lazy = false,
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
-			provider = "gemini",
-			-- provider = "openai",
-			-- provider = "claude",
-			claude = {
-				model = "claude-3-5-sonnet-20241022",
-				temperature = 0,
-				max_tokens = 4096,
-			},
-			gemini = {
-				-- model = "gemini-2.5-pro-preview-05-06",
-				model = "gemini-2.5-flash-preview-04-17",
-			},
-			vendors = {
+			providers = {
+				openai = {
+					endpoint = "https://api.openai.com/v1",
+					model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+					timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+					extra_request_body = {
+						temperature = 0,
+						max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+						reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+					},
+				},
+				gemini = {
+					model = "gemini-2.5-flash-preview-04-17", -- your desired model
+				},
+				claude = {
+					endpoint = "https://api.anthropic.com/v1",
+					model = "claude-3-5-sonnet-20241022", -- your desired model
+					extra_request_body = {
+						temperature = 0,
+						max_tokens = 4096, -- Increase this to include reasoning tokens (for reasoning models)
+					},
+				},
 				deepseek = {
 					__inherited_from = "openai",
 					api_key_name = "DEEPSEEK_API_KEY",
 					endpoint = "https://api.deepseek.com/v1",
 					model = "deepseek-coder",
-					temperature = 0,
-					max_tokens = 4096,
+					extra_request_body = {
+						-- DeepSeek does not support reasoning models yet
+						temperature = 0,
+						max_completion_tokens = 4096, 
+					},
 				},
 			},
 		},
