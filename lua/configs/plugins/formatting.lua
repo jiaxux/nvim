@@ -70,9 +70,9 @@ return {
 					-- This can also be a function, like args
 					append_args = { "--trailing-comma" },
 				},
-				black = {
-					prepend_args = { "--line-length", "79" },
-				},
+				-- black = {
+				-- 	prepend_args = { "--line-length", "79" },
+				-- },
 				-- These can also be a function that returns the formatter
 				other_formatter = function(bufnr)
 					return {
