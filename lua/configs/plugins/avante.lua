@@ -5,7 +5,7 @@ return {
 		lazy = false,
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
-			provider = "gemini", -- default provider, can be openai, gemini, claude, deepseek
+			provider = "claude", -- default provider, can be openai, gemini, claude, deepseek
 			providers = {
 				openai = {
 					endpoint = "https://api.openai.com/v1",
@@ -19,13 +19,19 @@ return {
 				},
 				gemini = {
 					model = "gemini-2.5-flash-preview-04-17", -- your desired model
-				},
-				claude = {
-					endpoint = "https://api.anthropic.com/v1",
-					model = "claude-3-5-sonnet-20241022", -- your desired model
 					extra_request_body = {
 						temperature = 0,
-						max_tokens = 4096, -- Increase this to include reasoning tokens (for reasoning models)
+						max_tokens = 30000, -- Increase this to include reasoning tokens (for reasoning models)
+						max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+					},
+				},
+				claude = {
+					endpoint = 'https://api.anthropic.com',
+					model = 'claude-sonnet-4-20250514',
+					timeout = 30000, -- Timeout in milliseconds
+					extra_request_body = {
+						temperature = 0.75,
+						max_tokens = 20480, -- Increase this to include reasoning tokens (for reasoning models)
 					},
 				},
 				deepseek = {
@@ -36,7 +42,7 @@ return {
 					extra_request_body = {
 						-- DeepSeek does not support reasoning models yet
 						temperature = 0,
-						max_completion_tokens = 4096, 
+						max_completion_tokens = 4096,
 					},
 				},
 			},
