@@ -93,11 +93,6 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-			-- Document symbols/outline
-			vim.keymap.set("n", "<leader>o", function()
-				vim.fn.setqflist({}) -- Clear quickfix list
-				vim.lsp.buf.document_symbol()
-			end, opts)
 		end
 
 		-- Setup each LSP server with capabilities and key mappings

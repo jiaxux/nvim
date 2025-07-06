@@ -19,6 +19,7 @@ require("lazy").setup({
 	require("configs.plugins.diffview"),
 	require("configs.plugins.fzf-lua"),
 	require("configs.plugins.yanky"),
+	require("configs.plugins.outline"),
 	require("configs.plugins.snacks"),
 	require("configs.plugins.mason"),
 	require("configs.plugins.tiny-inline-diagnostics"),
