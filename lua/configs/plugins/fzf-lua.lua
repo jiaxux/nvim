@@ -26,7 +26,6 @@ return {
 					git_icons = false,
 					file_icons = true,
 					color_icons = true,
-					preview_opts = "hidden",
 				},
 				grep = {
 					previewer = "builtin",
