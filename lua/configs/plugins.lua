@@ -35,6 +35,7 @@ require("lazy").setup({
 	require("configs.plugins.nvim-surround"),
 	require("configs.plugins.lualine"),
 	require("configs.plugins.vimtex"),
+	require("configs.plugins.neoscroll"),
 	require("configs.plugins.nvim-autopairs"),
 	require("configs.plugins.flash"),
 	require("configs.plugins.smart-splits"),
