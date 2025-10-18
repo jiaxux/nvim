@@ -5,7 +5,7 @@ return {
 		lazy = false,
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
-			provider = "gemini", -- default provider, can be openai, gemini, claude, deepseek
+			provider = "openai", -- default provider, can be openai, gemini, claude, deepseek
 			providers = {
 				openai = {
 					endpoint = "https://api.openai.com/v1",
