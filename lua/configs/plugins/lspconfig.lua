@@ -8,46 +8,6 @@
 return {
 	"neovim/nvim-lspconfig",
 
-	-- example using `opts` for defining servers
-	opts = {
-		servers = {
-			lua_ls = {},
-		},
-	},
-	config = function(_, opts)
-		local lspconfig = require("lspconfig")
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, {
-			textDocument = {
-				completion = {
-					completionItem = {
-						snippetSupport = true,
-						preselectSupport = true,
-						insertReplaceSupport = true,
-						labelDetailsSupport = true,
-						deprecatedSupport = true,
-						commitCharactersSupport = true,
-						tagSupport = { valueSet = { 1 } },
-						resolveSupport = {
-							properties = {
-								"documentation",
-								"detail",
-								"additionalTextEdits",
-							},
-						},
-					},
-					contextSupport = true,
-					dynamicRegistration = true,
-				},
-			},
-		})
-		for server, config in pairs(opts.servers) do
-			config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
-			lspconfig[server].setup(config)
-		end
-	end,
-
-	-- example calling setup directly for each LSP
 	config = function()
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, {
@@ -74,12 +34,11 @@ return {
 				},
 			},
 		})
-		local lspconfig = require("lspconfig")
 
 		-- Define on_attach function for key mappings
 		local on_attach = function(client, bufnr)
 			-- Enable completion triggered by <c-x><c-o>
-			vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+			vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
 
 			-- Buffer local mappings
 			local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -92,20 +51,19 @@ return {
 			-- Optional: Add other useful LSP keymaps
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
 		end
 
-		-- Setup each LSP server with capabilities and key mappings
+		-- Setup each LSP server using vim.lsp.config
 		local servers = { "texlab", "lua_ls" }
 		for _, server in ipairs(servers) do
-			lspconfig[server].setup({
+			vim.lsp.config(server, {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
 		end
 
 		-- Special setup for pyright to use the correct Python environment
-		lspconfig.pyright.setup({
+		vim.lsp.config("pyright", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -128,7 +86,7 @@ return {
 		})
 
 		-- Special setup for clangd with offset encoding
-		lspconfig.clangd.setup({
+		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			cmd = {

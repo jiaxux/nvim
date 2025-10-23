@@ -41,7 +41,6 @@ require("lazy").setup({
 	require("configs.plugins.gitsigns"),
 	require("configs.plugins.nvim-treesitter"),
 	require("configs.plugins.nvim-tmux-navigation"),
-	require("configs.plugins.nvim-dap"),
 	require("configs.plugins.dressing"),
 	require("configs.plugins.nui"),
 	require("configs.plugins.outline"),
