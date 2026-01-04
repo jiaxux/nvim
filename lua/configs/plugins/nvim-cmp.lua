@@ -94,17 +94,39 @@ return {
 		local cmp = require("cmp")
 		cmp.setup(opts)
 
-		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+		-- Cmdline mapping
+		local cmdline_mapping = {
+			["<Tab>"] = { c = cmp.mapping.select_next_item() },
+			["<S-Tab>"] = { c = cmp.mapping.select_prev_item() },
+			["<C-n>"] = { c = cmp.mapping.select_next_item() },
+			["<C-p>"] = { c = cmp.mapping.select_prev_item() },
+			["<C-e>"] = { c = cmp.mapping.abort() },
+			["<C-y>"] = { c = cmp.mapping.confirm({ select = true }) },
+			["<CR>"] = {
+				c = function(fallback)
+					if cmp.visible() and cmp.get_selected_entry() then
+						cmp.confirm({ select = false })
+					else
+						cmp.close()
+						fallback()
+					end
+				end,
+			},
+		}
+
+		-- Use buffer source for `/` and `?`
 		cmp.setup.cmdline({ "/", "?" }, {
-			mapping = cmp.mapping.preset.cmdline(),
+			mapping = cmdline_mapping,
+			completion = { completeopt = "menu,menuone,noselect" },
 			sources = {
 				{ name = "buffer" },
 			},
 		})
 
-		-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+		-- Use cmdline & path source for ':'
 		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
+			mapping = cmdline_mapping,
+			completion = { completeopt = "menu,menuone,noselect" },
 			sources = cmp.config.sources({
 				{ name = "path" },
 			}, {
