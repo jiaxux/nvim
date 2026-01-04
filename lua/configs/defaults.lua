@@ -20,6 +20,7 @@ opt.showmode = false
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
+opt.signcolumn = "yes"
 
 -- Virtual Lines
 -- vim.diagnostic.config({

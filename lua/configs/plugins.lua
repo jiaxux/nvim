@@ -28,6 +28,7 @@ require("lazy").setup({
 	require("configs.plugins.formatting"),
 	require("configs.plugins.nvim-lint"),
 	require("configs.plugins.nvim-cmp"),
+	require("configs.plugins.nvim-dap"),
 	require("configs.plugins.commentary"),
 	require("configs.plugins.lazygit"),
 	require("configs.plugins.nvim-tree"),
