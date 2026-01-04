@@ -2,8 +2,9 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 	lazy = false,
 	dependencies = {
-		{ "williamboman/mason.nvim", build = ":MasonUpdate", },
-		"neovim/nvim-lspconfig" ,
+		{ "williamboman/mason.nvim", build = ":MasonUpdate" },
+		"neovim/nvim-lspconfig",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
 		require("mason").setup({
@@ -11,12 +12,13 @@ return {
 				icons = {
 					package_installed = "✓",
 					package_pending = "➜",
-					package_uninstalled = "✗"
-				}
-			}
+					package_uninstalled = "✗",
+				},
+			},
 		})
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls",
+			ensure_installed = {
+				"lua_ls",
 				"pyright",
 				"clangd",
 				"texlab",
@@ -25,5 +27,10 @@ return {
 			},
 			automatic_installation = true,
 		})
-	end
+		require("mason-tool-installer").setup({
+			ensure_installed = {
+				"stylua",
+			},
+		})
+	end,
 }
