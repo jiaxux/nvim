@@ -14,5 +14,5 @@ return {
 		vim.g.vimtex_view_enabled = 1
 		vim.g.vimtex_mappings_enabled = 1
 	end,
-	ft = { "tex", "latex" }
+	ft = { "tex", "latex" },
 }

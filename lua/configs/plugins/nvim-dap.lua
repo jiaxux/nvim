@@ -1,7 +1,12 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		lazy = false,
+		keys = {
+			{ "<leader>db", desc = "Toggle Breakpoint" },
+			{ "<leader>dc", desc = "Continue" },
+			{ "<F5>", desc = "Start/Continue" },
+		},
+		ft = { "python", "c", "cpp" },
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 			"nvim-neotest/nvim-nio",

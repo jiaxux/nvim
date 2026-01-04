@@ -44,6 +44,5 @@ require("lazy").setup({
 	require("configs.plugins.dressing"),
 	require("configs.plugins.nui"),
 	require("configs.plugins.outline"),
-	require("configs.plugins.avante"),
+	-- require("configs.plugins.avante"),
 })
-

@@ -1,8 +1,11 @@
 return {
 	{
 		"yetone/avante.nvim",
-		event = "VeryLazy",
-		lazy = false,
+		cmd = { "AvanteAsk", "AvanteChat", "AvanteToggle" },
+		keys = {
+			{ "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Avante Ask" },
+			{ "<leader>at", "<cmd>AvanteToggle<cr>", desc = "Avante Toggle" },
+		},
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
 			provider = "openai", -- default provider, can be openai, gemini, claude, deepseek
@@ -26,8 +29,8 @@ return {
 					},
 				},
 				claude = {
-					endpoint = 'https://api.anthropic.com',
-					model = 'claude-sonnet-4-20250514',
+					endpoint = "https://api.anthropic.com",
+					model = "claude-sonnet-4-20250514",
 					timeout = 15000, -- Timeout in milliseconds
 					extra_request_body = {
 						temperature = 0.2,
