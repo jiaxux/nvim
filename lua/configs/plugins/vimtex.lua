@@ -9,6 +9,9 @@ return {
 		vim.g.maplocalleader = "\\" -- Set local leader to backslash
 		-- Ensure VimTeX uses latex filetype
 		vim.g.tex_flavor = "latex"
+		vim.g.vimtex_compiler_latexmk_engines = {
+			_ = "-lualatex",
+		}
 		-- Enable compiler, viewer, and key mappings
 		vim.g.vimtex_compiler_enabled = 1
 		vim.g.vimtex_view_enabled = 1
