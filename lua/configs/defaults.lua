@@ -18,7 +18,7 @@ opt.colorcolumn = "89"
 opt.splitright = true
 opt.showmode = false
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldenable = false
 opt.signcolumn = "yes"
 

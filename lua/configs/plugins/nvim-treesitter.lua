@@ -1,37 +1,68 @@
 return {
-	"nvim-treesitter/playground",
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		lazy = false,
 		priority = 1000,
 		build = ":TSUpdate",
-		config = function()
+		main = "nvim-treesitter",
+		opts = {
+			ensure_installed = {
+				"bash",
+				"c",
+				"cpp",
+				"css",
+				"dart",
+				"fish",
+				"go",
+				"html",
+				"javascript",
+				"json",
+				"latex",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"query",
+				"rust",
+				"toml",
+				"typescript",
+				"vim",
+				"vimdoc",
+				"yaml",
+			},
+		},
+		init = function()
+			-- Disable smartindent since treesitter handles indentation
 			vim.opt.smartindent = false
-			require("nvim-treesitter.configs").setup({
-				auto_install = true,
-				sync_install = false,
-				ensure_installed = "all",
-				highlight = {
-					enable = true,
-					disable = {}, -- list of language that will be disabled
-				},
-				indent = {
-					enable = true,
-					disable = function(lang, bufnr)
-						local disallowed_filetypes = { "yaml", "dart" }
-						return vim.tbl_contains(disallowed_filetypes, lang)
-					end,
-				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "<c-n>",
-						node_incremental = "<c-n>",
-						node_decremental = "<c-h>",
-						scope_incremental = "<c-l>",
-					},
-				},
+
+			-- Enable treesitter features via FileType autocmd
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function(args)
+					-- Try to start treesitter highlighting
+					pcall(vim.treesitter.start)
+
+					-- Enable treesitter indentation (except for yaml and dart)
+					local disabled_indent = { yaml = true, dart = true }
+					if not disabled_indent[vim.bo[args.buf].filetype] then
+						vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end
+				end,
 			})
+
+			-- Incremental selection keymaps
+			vim.keymap.set("n", "<c-n>", function()
+				require("nvim-treesitter.incremental_selection").init_selection()
+			end, { desc = "Init treesitter selection" })
+			vim.keymap.set("v", "<c-n>", function()
+				require("nvim-treesitter.incremental_selection").node_incremental()
+			end, { desc = "Increment treesitter selection" })
+			vim.keymap.set("v", "<c-h>", function()
+				require("nvim-treesitter.incremental_selection").node_decremental()
+			end, { desc = "Decrement treesitter selection" })
+			vim.keymap.set("v", "<c-l>", function()
+				require("nvim-treesitter.incremental_selection").scope_incremental()
+			end, { desc = "Increment treesitter scope" })
 		end,
 	},
 	{
