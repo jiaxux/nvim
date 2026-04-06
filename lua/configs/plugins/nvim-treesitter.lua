@@ -6,8 +6,12 @@ return {
 		priority = 1000,
 		build = ":TSUpdate",
 		main = "nvim-treesitter",
-		opts = {
-			ensure_installed = {
+		init = function()
+			-- Disable smartindent since treesitter handles indentation
+			vim.opt.smartindent = false
+
+			-- Ensure parsers are installed (only installs missing ones)
+			local ensureInstalled = {
 				"bash",
 				"c",
 				"cpp",
@@ -30,11 +34,16 @@ return {
 				"vim",
 				"vimdoc",
 				"yaml",
-			},
-		},
-		init = function()
-			-- Disable smartindent since treesitter handles indentation
-			vim.opt.smartindent = false
+			}
+			local alreadyInstalled = require("nvim-treesitter.config").get_installed()
+			local parsersToInstall = vim.iter(ensureInstalled)
+				:filter(function(parser)
+					return not vim.tbl_contains(alreadyInstalled, parser)
+				end)
+				:totable()
+			if #parsersToInstall > 0 then
+				require("nvim-treesitter").install(parsersToInstall)
+			end
 
 			-- Enable treesitter features via FileType autocmd
 			vim.api.nvim_create_autocmd("FileType", {
