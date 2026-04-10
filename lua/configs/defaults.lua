@@ -13,7 +13,7 @@ opt.encoding = "utf-8"
 opt.number = true
 opt.relativenumber = true
 opt.ignorecase = true
-opt.smartindent = true
+opt.smartindent = false
 opt.colorcolumn = "89"
 opt.splitright = true
 opt.showmode = false
@@ -22,6 +22,16 @@ opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldenable = false
 opt.signcolumn = "yes"
 
+-- Built-in treesitter
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(args)
+		pcall(vim.treesitter.start)
+		local disabled_indent = { yaml = true, dart = true }
+		if not disabled_indent[vim.bo[args.buf].filetype] then
+			vim.bo[args.buf].indentexpr = "v:lua.vim.treesitter.indentexpr()"
+		end
+	end,
+})
 -- Virtual Lines
 -- vim.diagnostic.config({
 -- 	-- Use the default configuration
