@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugin Specification
 require("lazy").setup({
-	require("configs.plugins.catppuccin"),
+	require("configs.plugins.kanagawa"),
 	require("configs.plugins.copilot"),
 	require("configs.plugins.diffview"),
 	require("configs.plugins.fzf-lua"),
